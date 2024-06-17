@@ -32,10 +32,10 @@ jobs:
           pip install pytest pytest-cov
           pytest -v automation/test_square.py
 
-      - name: Download artifact 
-        uses: actions/download-artifact@v3
-        with: 
-          name: static-site
+      #- name: Download artifact 
+      #  uses: actions/download-artifact@v3
+      #  with: 
+      #    name: static-site
       - name: Archive site content 
         uses: thedoctor0/zip-release@master
         with:
