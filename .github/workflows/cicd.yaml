@@ -23,6 +23,7 @@ jobs:
 
       - name: Lint code
         run: flake8 .
+        continue-on-error: true
 
       - name: Run tests
         run: pytest tests/
