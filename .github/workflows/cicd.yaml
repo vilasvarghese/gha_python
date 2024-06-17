@@ -19,16 +19,18 @@ jobs:
           python-version: 3.9  # Replace with desired Python version
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+    
       - name: Lint code
         run: flake8 .
         continue-on-error: true
 
       - name: Run tests
         run: |
-          pip install pytest
-          pytest -v automation/
+          pip install pytest pytest-cov
+          pytest -v automation/test_square.py
 
       - name: Download artifact 
         uses: actions/download-artifact@v3
