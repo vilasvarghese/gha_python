@@ -1,0 +1,36 @@
+name: CI/CD for Python Project
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:  # Also run on pull requests
+  workflow_dispatch:  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Replace with desired runner
+
+    steps:
+      - uses: actions/checkout@v4  # Checkout code
+
+      - name: Set up Python environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9  # Replace with desired Python version
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Lint code
+        run: flake8 .
+
+      - name: Run tests
+        run: pytest tests/
+
+      #- name: Build project (optional)
+        # Add commands to build your project here (e.g., building a Docker image)
+      # Deployment step (not included in this example)
+      # - name: Deploy to production
+      #   uses: actions/checkout@v4  # Optional, checkout code again if needed
+      #   with:
+      #     # ... deployment configuration options ...
