@@ -26,7 +26,9 @@ jobs:
         continue-on-error: true
 
       - name: Run tests
-        run: pytest -v automation/
+        run: |
+          pip install pytest
+          pytest -v automation/
 
       #- name: Build project (optional)
         # Add commands to build your project here (e.g., building a Docker image)
